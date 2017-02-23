@@ -1,12 +1,16 @@
 const $grudgeContainer = $('.grudge-list-container')
 
 $(document).ready(function() {
+  getGrudges()
+})
+
+const getGrudges = () => {
   axios.get('/api/grudges')
   .then(res => {
     console.log('response', res.data);
     displayGrudgeList(res.data)
   })
-})
+}
 
 const displayGrudgeList = (grudges) => {
   //TODO: create document fragment
@@ -16,5 +20,5 @@ const displayGrudgeList = (grudges) => {
 }
 
 const listHTML = (grudge) => {
-  $grudgeContainer.append(`<li class=${grudge.id}><a href="/${grudge.id}">${grudge.name}</a></li>`)
+  $grudgeContainer.append(`<li class=${grudge.id}><a href="/grudge/${grudge.id}">${grudge.name}</a></li>`)
 }
