@@ -17,15 +17,15 @@ app.locals.grudges = [
     id: 1,
     name: 'Lebron',
     offence: 'on the cavs',
-    forgiven: false,
-    date: '2/22/17'
+    date: '2/22/17',
+    forgiven: false
   },
   {
     id: 2,
     name: 'KD',
     offence: 'left OKC',
-    forgiven: false,
-    date: '2/20/17'
+    date: '2/20/17',
+    forgiven: false
   }
 ]
 
@@ -37,16 +37,25 @@ app.get('/grudge/*', (req, res) => {
   res.status(200).sendFile(path.join(__dirname, '../public/views', 'grudge.html'))
 })
 
+app.get('/api/grudges', (req, res) => {
+  res.status(200).json(app.locals.grudges)
+})
+
+app.post('/api/grudges', (req, res) => {
+  const { name, offence, date } = req.body
+  let length = app.locals.grudges.length
+  const uid = length += 1
+  const grudge = { id: uid, name, offence, date, forgiven: false }
+  app.locals.grudges.push(grudge)
+  res.status(200).json(app.locals.grudges)
+})
+
 app.get('/api/grudges/:id', (req, res) => {
   const { id } = req.params
   const grudge = app.locals.grudges.filter(grudge => {
     if(grudge.id == id) return grudge
   })
   res.status(200).json(grudge)
-})
-
-app.get('/api/grudges', (req, res) => {
-  res.status(200).json(app.locals.grudges)
 })
 
 //TODO: set up route for not found paths
