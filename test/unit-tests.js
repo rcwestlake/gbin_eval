@@ -10,7 +10,7 @@ describe('Unit Tests', () => {
     axios = require('axios')
   });
 
-  it('fake test', () => {
+  xit('home.js', () => {
     const getGrudgeCounts = require('../public/js/home.js')
     const grudges = [{
       id: 1,
