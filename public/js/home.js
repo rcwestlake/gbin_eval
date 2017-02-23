@@ -64,7 +64,6 @@ const getGrudgeCounts = (grudges) => {
 }
 
 const displayCounts = (length, forgiven, unforgiven) => {
-  console.log(length, forgiven, unforgiven);
   $countList.append(`<li class='count js-count'>List length: ${length}</li>`)
   $countList.append(`<li class='count js-count'>Forgiven count: ${forgiven}</li>`)
   $countList.append(`<li class='count js-count'>Unforgiven count: ${unforgiven}</li>`)
