@@ -13,6 +13,14 @@ describe('Server Tests', () => {
   it('/api/grudges - should have 200 status', (done) => {
     request(app)
       .get('/api/grudges')
+      .expect('Content-Type', /json/)
+      .expect(200, done)
+  })
+
+  it('/api/grudges - should post and 200', (done) => {
+    request(app)
+      .post('/api/grudges')
+      .expect('Content-Type', /json/)
       .expect(200, done)
   })
 
@@ -28,15 +36,17 @@ describe('Server Tests', () => {
       .expect(200, done)
   })
 
-  it('/grudge/* - should post and 200', (done) => {
+  it('/api/grudge/:id - should respond with 200 with different param', (done) => {
     request(app)
-      .post('/api/grudges')
+      .patch('/api/grudges/2')
+      .expect('Content-Type', /json/)
       .expect(200, done)
   })
 
-  it('/grudge/* - should respond with 200 with different param', (done) => {
+  it('/api/grudge/:id - should respond with 200 with different param', (done) => {
     request(app)
-      .patch('/api/grudges/2')
+      .get('/api/grudges/2')
+      .expect('Content-Type', /json/)
       .expect(200, done)
   })
 
