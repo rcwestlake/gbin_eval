@@ -43,6 +43,7 @@ $form.on('submit', (e) => {
 const addGrudgeToDb = (name, offence, date) => {
   axios.post('/api/grudges', {name, offence, date})
   .then(res => displayGrudgeList(res.data))
+  .catch(err => console.error('ERROR: in addGrudgeToDb', err))
 }
 
 const clearGrudges = () => {

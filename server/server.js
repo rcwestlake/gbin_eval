@@ -53,9 +53,22 @@ app.post('/api/grudges', (req, res) => {
 app.get('/api/grudges/:id', (req, res) => {
   const { id } = req.params
   const grudge = app.locals.grudges.filter(grudge => {
-    if(grudge.id == id) return grudge
+    if(grudge.id === parseInt(id)) return grudge
   })
   res.status(200).json(grudge)
+})
+
+app.patch('/api/grudges/:id', (req, res) => {
+  const { id } = req.params
+  const { forgiven } = req.body
+  const updatedGrudges = app.locals.grudges.map(grudge => {
+    if(grudge.id === parseInt(id)) grudge.forgiven = true
+    return grudge
+  })
+  console.log(updatedGrudges);
+
+  app.locals.grudges = updatedGrudges
+  res.status(200).json(app.locals.grudges)
 })
 
 //TODO: set up route for not found paths
