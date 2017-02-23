@@ -2,9 +2,9 @@
   "name": "gbin_eval",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "public/views/index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server/server.js"
   },
   "author": "Ryan C Westlake",
   "license": "ISC",
@@ -18,6 +18,7 @@
     "axios": "^0.15.3",
     "body-parser": "^1.16.1",
     "express": "^4.14.1",
-    "jquery": "^3.1.1"
+    "jquery": "^3.1.1",
+    "path": "^0.12.7"
   }
 }
