@@ -19,6 +19,13 @@ app.locals.grudges = [
     offense: 'on the cavs',
     forgiven: false,
     date: '2/22/17'
+  },
+  {
+    id: 2,
+    name: 'KD',
+    offense: 'left OKC',
+    forgiven: false,
+    date: '2/20/17'
   }
 ]
 
