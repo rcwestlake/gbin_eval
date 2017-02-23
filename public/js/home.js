@@ -33,7 +33,11 @@ const displayGrudgeList = (grudges) => {
 }
 
 const listHTML = (grudge) => {
-  $grudgeContainer.append(`<li class='grudge js-grudge ${grudge.id}'><a href="/grudge/${grudge.id}">${grudge.name}</a></li>`)
+  $grudgeContainer.append(`<li
+                            class='grudge js-grudge ${grudge.id}'>
+                            <a href="/grudge/${grudge.id}">
+                              ${grudge.name} ${grudge.forgiven ? '(forgiven)': ''}
+                            </a></li>`)
 }
 
 $form.on('submit', (e) => {
