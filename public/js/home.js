@@ -90,7 +90,7 @@ $sortByOldDateBtn.on('click', () => {
     return new Date(a.date) - new Date(b.date)
   })
 
-  grudgesState = sorted
+  updateGrudgesState(grudgesState, sorted)
   displayGrudgeList(sorted)
 })
 
@@ -99,6 +99,10 @@ $sortByNewDateBtn.on('click', () => {
     return new Date(b.date) - new Date(a.date)
   })
 
-  grudgesState = sorted
+  updateGrudgesState(grudgesState, sorted)
   displayGrudgeList(sorted)
 })
+
+const updateGrudgesState = (state, newState) => {
+  state = newState
+}
