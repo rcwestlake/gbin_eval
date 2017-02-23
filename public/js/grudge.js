@@ -41,6 +41,7 @@ const forgiveGrudge = (id) => {
 const updateForgiveInDb = (id) => {
   axios.patch(`/api/grudges/${id}`)
   .then(res => console.log(res))
+  .catch(err => console.error('ERROR: in updateForgiveInDb', err))
 }
 
 $grudgeContainer.on('click', (e) => {
