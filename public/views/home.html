@@ -5,11 +5,18 @@
     <title>GBIN</title>
   </head>
   <body>
-    <h1>home page</h1>
-    <ul class="grudge-list-container">
-      <li>item 1</li>
-      <li>item 2</li>
-    </ul>
+    <h1>the home page</h1>
+    <form class="grudge-form js-grudge-form">
+      <input type="text" placeholder="name" class="name-input js-name-input" />
+      <input type="text" placeholder="offence description" class="desc-input js-desc-input" />
+      <input type="date" class="date-input js-date-input" />
+      <button
+        type="submit"
+        class="add-grudge-btn js-add-grudge-btn">
+        Add Grudge
+      </button>
+    </form>
+    <ul class="grudge-list-container"></ul>
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.3/axios.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
