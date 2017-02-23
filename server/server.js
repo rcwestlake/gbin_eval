@@ -24,7 +24,7 @@ app.locals.grudges = [
     id: 2,
     name: 'KD',
     offence: 'left OKC',
-    date: '2/20/17',
+    date: '2/15/17',
     forgiven: false
   }
 ]
@@ -65,7 +65,6 @@ app.patch('/api/grudges/:id', (req, res) => {
     if(grudge.id === parseInt(id)) grudge.forgiven = true
     return grudge
   })
-  console.log(updatedGrudges);
 
   app.locals.grudges = updatedGrudges
   res.status(200).json(app.locals.grudges)

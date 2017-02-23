@@ -4,7 +4,12 @@ const $nameInput = $('.js-name-input')
 const $descInput = $('.js-desc-input')
 const $dateInput = $('.js-date-input')
 const $addGrudgeBtn = $('.js-add-grudge-btn')
+const $sortByNameBtn = $('.js-sort-name-btn')
+const $sortByOldDateBtn = $('.js-sort-date-old-btn')
+const $sortByNewDateBtn = $('.js-sort-date-new-btn')
 const $countList = $('.js-counts-list')
+
+let grudgesState
 
 $(document).ready(function() {
   getGrudges()
@@ -18,6 +23,7 @@ const getGrudges = () => {
 }
 
 const displayGrudgeList = (grudges) => {
+  grudgesState = grudges
   //TODO: create document fragment
   clearGrudges()
   grudges.map(grudge => {
@@ -69,3 +75,30 @@ const displayCounts = (length, forgiven, unforgiven) => {
   $countList.append(`<li class='count js-count'>Forgiven count: ${forgiven}</li>`)
   $countList.append(`<li class='count js-count'>Unforgiven count: ${unforgiven}</li>`)
 }
+
+$sortByNameBtn.on('click', () => {
+  //TODO: consider allowing reverse sort
+  const sorted = grudgesState.sort((a, b) => {
+    return a.name.localeCompare(b.name)
+  })
+  grudgesState = sorted
+  displayGrudgeList(sorted)
+})
+
+$sortByOldDateBtn.on('click', () => {
+  const sorted = grudgesState.sort((a, b) => {
+    return new Date(a.date) - new Date(b.date)
+  })
+
+  grudgesState = sorted
+  displayGrudgeList(sorted)
+})
+
+$sortByNewDateBtn.on('click', () => {
+  const sorted = grudgesState.sort((a, b) => {
+    return new Date(b.date) - new Date(a.date)
+  })
+
+  grudgesState = sorted
+  displayGrudgeList(sorted)
+})
