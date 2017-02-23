@@ -30,11 +30,11 @@ app.locals.grudges = [
 ]
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/views', 'home.html'))
+  res.status(200).sendFile(path.join(__dirname, '../public/views', 'home.html'))
 })
 
 app.get('/grudge/*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/views', 'grudge.html'))
+  res.status(200).sendFile(path.join(__dirname, '../public/views', 'grudge.html'))
 })
 
 app.get('/api/grudges/:id', (req, res) => {
@@ -51,6 +51,11 @@ app.get('/api/grudges', (req, res) => {
 
 //TODO: set up route for not found paths
 
-app.listen(PORT, () => {
-  console.log(`${app.locals.title} is running on ${app.get('port')}`)
-})
+if(!module.parent){
+  app.listen(PORT, () => {
+    console.log(`${app.locals.title} is running on ${app.get('port')}`)
+  })
+}
+
+
+module.exports = app
