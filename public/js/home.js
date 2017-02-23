@@ -30,11 +30,13 @@ const listHTML = (grudge) => {
 }
 
 $form.on('submit', (e) => {
+  //TODO: move values into getInput func
   e.preventDefault()
   const name = $nameInput.val()
   const offence = $descInput.val()
   const date = $dateInput.val()
   addGrudgeToDb(name, offence, date)
+  clearInputFields()
 })
 
 const addGrudgeToDb = (name, offence, date) => {
@@ -44,4 +46,10 @@ const addGrudgeToDb = (name, offence, date) => {
 
 const clearGrudges = () => {
   $('.js-grudge').remove()
+}
+
+const clearInputFields = () => {
+  $nameInput.val('')
+  $descInput.val('')
+  $dateInput.val('')
 }
