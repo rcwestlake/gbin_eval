@@ -70,6 +70,10 @@ app.patch('/api/grudges/:id', (req, res) => {
   res.status(200).json(app.locals.grudges)
 })
 
+app.get('*', (req, res) => {
+  res.status(404).sendFile(path.join(__dirname, '../public/views', 'not-found.html'))
+})
+
 //TODO: set up route for not found paths
 
 if(!module.parent){
@@ -77,6 +81,5 @@ if(!module.parent){
     console.log(`${app.locals.title} is running on ${app.get('port')}`)
   })
 }
-
 
 module.exports = app

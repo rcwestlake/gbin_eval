@@ -106,3 +106,9 @@ $sortByNewDateBtn.on('click', () => {
 const updateGrudgesState = (state, newState) => {
   state = newState
 }
+
+if(typeof module !== 'undefined') {
+  module.exports = {
+    getGrudgeCounts: getGrudgeCounts
+  }
+}
