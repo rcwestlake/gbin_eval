@@ -4,6 +4,7 @@ const $nameInput = $('.js-name-input')
 const $descInput = $('.js-desc-input')
 const $dateInput = $('.js-date-input')
 const $addGrudgeBtn = $('.js-add-grudge-btn')
+const $countList = $('.js-counts-list')
 
 $(document).ready(function() {
   getGrudges()
@@ -12,7 +13,6 @@ $(document).ready(function() {
 const getGrudges = () => {
   axios.get('/api/grudges')
   .then(res => {
-    console.log('response', res.data);
     displayGrudgeList(res.data)
   })
 }
@@ -23,6 +23,7 @@ const displayGrudgeList = (grudges) => {
   grudges.map(grudge => {
     listHTML(grudge)
   })
+  getGrudgeCounts(grudges)
 }
 
 const listHTML = (grudge) => {
@@ -42,14 +43,29 @@ $form.on('submit', (e) => {
 const addGrudgeToDb = (name, offence, date) => {
   axios.post('/api/grudges', {name, offence, date})
   .then(res => displayGrudgeList(res.data))
+  .catch(err => console.error('ERROR: in addGrudgeToDb', err))
 }
 
 const clearGrudges = () => {
   $('.js-grudge').remove()
+  $('.js-count').remove()
 }
 
 const clearInputFields = () => {
   $nameInput.val('')
   $descInput.val('')
   $dateInput.val('')
+}
+
+const getGrudgeCounts = (grudges) => {
+  const length = grudges.length
+  const forgiven = grudges.filter(grudges => grudges.forgiven === true).length
+  const unforgiven = grudges.filter(grudges => grudges.forgiven !== true).length
+  displayCounts(length, forgiven, unforgiven)
+}
+
+const displayCounts = (length, forgiven, unforgiven) => {
+  $countList.append(`<li class='count js-count'>List length: ${length}</li>`)
+  $countList.append(`<li class='count js-count'>Forgiven count: ${forgiven}</li>`)
+  $countList.append(`<li class='count js-count'>Unforgiven count: ${unforgiven}</li>`)
 }
