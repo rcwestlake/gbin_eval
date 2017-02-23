@@ -43,7 +43,9 @@ app.get('/api/grudges', (req, res) => {
 
 app.post('/api/grudges', (req, res) => {
   const { name, offence, date } = req.body
-  const grudge = { name, offence, date, forgiven: false }
+  let length = app.locals.grudges.length
+  const uid = length += 1
+  const grudge = { id: uid, name, offence, date, forgiven: false }
   app.locals.grudges.push(grudge)
   res.status(200).json(app.locals.grudges)
 })
