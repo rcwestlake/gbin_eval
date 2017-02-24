@@ -11,7 +11,7 @@ describe('Unit Tests', () => {
   });
 
   xit('home.js', () => {
-    const getGrudgeCounts = require('../public/js/home.js')
+    const add = require('../public/js/home.js')
     const grudges = [{
       id: 1,
       name: 'Lebron',
@@ -26,7 +26,6 @@ describe('Unit Tests', () => {
       date: '2/15/17',
       forgiven: false
     }]
-    console.log('the func', getGrudgeCounts(grudges));
     expect(getGrudgeCounts(grudges)).to.be.a('function')
   })
 });

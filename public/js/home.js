@@ -41,7 +41,6 @@ const listHTML = (grudge) => {
 }
 
 $form.on('submit', (e) => {
-  //TODO: move values into getInput func
   e.preventDefault()
   const name = $nameInput.val()
   const offence = $descInput.val()
@@ -81,31 +80,44 @@ const displayCounts = (length, forgiven, unforgiven) => {
 }
 
 $sortByNameBtn.on('click', () => {
-  //TODO: consider allowing reverse sort
-  const sorted = grudgesState.sort((a, b) => {
-    return a.name.localeCompare(b.name)
-  })
+  const sorted = sortByName()
   grudgesState = sorted
   displayGrudgeList(sorted)
 })
 
 $sortByOldDateBtn.on('click', () => {
-  const sorted = grudgesState.sort((a, b) => {
-    return new Date(a.date) - new Date(b.date)
-  })
-
+  const sorted = sortByOldDate()
   updateGrudgesState(grudgesState, sorted)
   displayGrudgeList(sorted)
 })
 
 $sortByNewDateBtn.on('click', () => {
-  const sorted = grudgesState.sort((a, b) => {
-    return new Date(b.date) - new Date(a.date)
-  })
-
+  const sorted = sortByNewDate()
   updateGrudgesState(grudgesState, sorted)
   displayGrudgeList(sorted)
 })
+
+
+const sortByName = () => {
+  const sorted = grudgesState.sort((a, b) => {
+    return a.name.localeCompare(b.name)
+  })
+  return sorted
+}
+
+const sortByOldDate = () => {
+  const sorted = grudgesState.sort((a, b) => {
+    return new Date(a.date) - new Date(b.date)
+  })
+  return sorted
+}
+
+const sortByNewDate = () => {
+  const sorted = grudgesState.sort((a, b) => {
+    return new Date(b.date) - new Date(a.date)
+  })
+  return sorted
+}
 
 const updateGrudgesState = (state, newState) => {
   state = newState
@@ -113,6 +125,8 @@ const updateGrudgesState = (state, newState) => {
 
 if(typeof module !== 'undefined') {
   module.exports = {
-    getGrudgeCounts: getGrudgeCounts
+    getGrudgeCounts: getGrudgeCounts,
+    sortByOldDate: sortByOldDate,
+    sortByNewDate: sortByNewDate
   }
 }
