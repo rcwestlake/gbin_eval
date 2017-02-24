@@ -138,10 +138,13 @@ const updateGrudgesState = (state, newState) => {
 
 if(typeof module !== 'undefined') {
   module.exports = {
-    getGrudgeCounts: getGrudgeCounts,
-    sortByOldDate: sortByOldDate,
-    sortByNewDate: sortByNewDate,
-    sortByName: sortByName,
-    updateGrudgesState: updateGrudgesState
+    getGrudgeCounts,
+    sortByOldDate,
+    sortByNewDate,
+    sortByName,
+    updateGrudgesState,
+    getListCount,
+    getForgivenCount,
+    getUnforgivenCount
   }
 }

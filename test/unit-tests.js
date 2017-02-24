@@ -279,4 +279,42 @@ describe('Unit Tests', () => {
     const newState = {one: [2, 5, 10], two: 'a string'}
     expect(updateGrudgesState(state, newState)).to.equal(newState)
   })
+
+  it('should return length of list', () => {
+    const getListCount = require('../public/js/home.js').getListCount
+    const list = [{},{},{}]
+    expect(getListCount(list)).to.equal(3)
+  })
+
+  it('should return length of list', () => {
+    const getListCount = require('../public/js/home.js').getListCount
+    const list = []
+    expect(getListCount(list)).to.equal(0)
+  })
+
+  it('should return length of forgiven grudges', () => {
+    const getForgivenCount = require('../public/js/home.js').getForgivenCount
+    const list = [{forgiven: true}, {forgiven: false}, {forgiven: false}]
+    expect(getForgivenCount(list)).to.equal(1)
+  })
+
+  it('should return length of forgiven grudges', () => {
+    const getForgivenCount = require('../public/js/home.js').getForgivenCount
+    const list = [{forgiven: false}, {forgiven: false}, {forgiven: false}]
+    expect(getForgivenCount(list)).to.equal(0)
+  })
+
+  it('should return length of forgiven grudges', () => {
+    const getUnforgivenCount = require('../public/js/home.js').getUnforgivenCount
+    const list = [{forgiven: false}, {forgiven: false}, {forgiven: false}]
+    expect(getUnforgivenCount(list)).to.equal(3)
+  })
+
+  it('should return length of forgiven grudges', () => {
+    const getUnforgivenCount = require('../public/js/home.js').getUnforgivenCount
+    const list = [{forgiven: true}, {forgiven: true}, {forgiven: false}]
+    expect(getUnforgivenCount(list)).to.equal(1)
+  })
+
+
 });
