@@ -34,8 +34,8 @@ const displayGrudgeList = (grudges) => {
 
 const listHTML = (grudge) => {
   $grudgeContainer.append(`<li class='grudge js-grudge ${grudge.id}'>
-                            <a href="/grudge/${grudge.id}">
-                              ${grudge.name} ${grudge.forgiven ? '(forgiven)': ''}
+                            <a class='grudge-text' href="/grudge/${grudge.id}">
+                              ${grudge.name} ${grudge.forgiven ? '<span class="forgiven">(forgiven)</span>': ''}
                             </a>
                            </li>`)
 }

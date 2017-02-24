@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+body {
+  box-sizing: border-box;
+  background-color: #46C3DB;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 60px;
+  font-weight: bold;
+}
+
+header {
+  text-align: center;
+  margin-top: 20px;
+}
+
+input {
+  height: 30px;
+}
+
+button, a {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  background-color: #07689F;
+  border: none;
+  color: white;
+  font-weight: bold;
+}
+
+.section-header {
+  font-size: 29px;
+  margin: 25px 0;
+}
+
+.grudge-form {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.add-grudge-btn {
+  height: 32px;
+  width: 100px;
+}
+
+.grudge-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.grudge {
+  margin-top: 10px;
+}
+
+.grudge-text {
+  color: #CF455C;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.grudge-text:hover {
+  text-decoration: underline;
+}
+
+.forgiven {
+  color: #2A528A;
+}
+
+.sort-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.sort-btn {
+  width: 120px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.sort-btn:hover {
+  background-color: #fff;
+  border: 2px solid #07689F;
+  color: #07689F;
+}
+
+.counts-list li {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 15px;
+}
