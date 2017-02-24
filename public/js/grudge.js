@@ -25,7 +25,6 @@ const displayGrudge = (grudge) => {
 }
 
 const grudgeToHTML = (grudge) => {
-  //TODO: document fragement
   $grudgeContainer.append(`<h1>Person: ${grudge.name}</h1>
                             <p class='reason'>Reason for grudge: ${grudge.offence}</p>
                             <button class='forgive-btn'>Forgive</button>
@@ -45,7 +44,6 @@ const forgiveGrudge = (id) => {
 
 const updateForgiveInDb = (id) => {
   axios.patch(`/api/grudges/${id}`)
-  .then(res => console.log(res))
   .catch(err => console.error('ERROR: in updateForgiveInDb', err))
 }
 

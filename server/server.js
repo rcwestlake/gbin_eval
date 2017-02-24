@@ -26,6 +26,13 @@ app.locals.grudges = [
     offence: 'left OKC',
     date: '2/15/17',
     forgiven: false
+  },
+  {
+    id: 3,
+    name: 'steph',
+    offence: 'balling all over',
+    date: '1/1/2017',
+    forgiven: false
   }
 ]
 
@@ -73,8 +80,6 @@ app.patch('/api/grudges/:id', (req, res) => {
 app.get('*', (req, res) => {
   res.status(404).sendFile(path.join(__dirname, '../public/views', 'not-found.html'))
 })
-
-//TODO: set up route for not found paths
 
 if(!module.parent){
   app.listen(PORT, () => {

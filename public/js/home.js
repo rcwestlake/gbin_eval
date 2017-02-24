@@ -24,7 +24,6 @@ const getGrudges = () => {
 
 const displayGrudgeList = (grudges) => {
   grudgesState = grudges
-  //TODO: create document fragment
   clearGrudges()
   grudges.map(grudge => {
     listHTML(grudge)
