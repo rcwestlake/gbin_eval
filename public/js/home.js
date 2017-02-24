@@ -39,15 +39,6 @@ const listHTML = (grudge) => {
                            </li>`)
 }
 
-$form.on('submit', (e) => {
-  e.preventDefault()
-  const name = $nameInput.val()
-  const offence = $descInput.val()
-  const date = $dateInput.val()
-  addGrudgeToDb(name, offence, date)
-  clearInputFields()
-})
-
 const addGrudgeToDb = (name, offence, date) => {
   axios.post('/api/grudges', {name, offence, date})
   .then(res => displayGrudgeList(res.data))
@@ -90,25 +81,6 @@ const displayCounts = (length, forgiven, unforgiven) => {
   $countList.append(`<li class='count js-count'>Unforgiven count: ${unforgiven}</li>`)
 }
 
-$sortByNameBtn.on('click', () => {
-  const sorted = sortByName()
-  grudgesState = sorted
-  displayGrudgeList(sorted)
-})
-
-$sortByOldDateBtn.on('click', () => {
-  const sorted = sortByOldDate()
-  updateGrudgesState(grudgesState, sorted)
-  displayGrudgeList(sorted)
-})
-
-$sortByNewDateBtn.on('click', () => {
-  const sorted = sortByNewDate()
-  updateGrudgesState(grudgesState, sorted)
-  displayGrudgeList(sorted)
-})
-
-
 const sortByName = () => {
   const sorted = grudgesState.sort((a, b) => {
     return a.name.localeCompare(b.name)
@@ -134,6 +106,33 @@ const updateGrudgesState = (state, newState) => {
   state = newState
   return state
 }
+
+$form.on('submit', (e) => {
+  e.preventDefault()
+  const name = $nameInput.val()
+  const offence = $descInput.val()
+  const date = $dateInput.val()
+  addGrudgeToDb(name, offence, date)
+  clearInputFields()
+})
+
+$sortByNameBtn.on('click', () => {
+  const sorted = sortByName()
+  grudgesState = sorted
+  displayGrudgeList(sorted)
+})
+
+$sortByOldDateBtn.on('click', () => {
+  const sorted = sortByOldDate()
+  updateGrudgesState(grudgesState, sorted)
+  displayGrudgeList(sorted)
+})
+
+$sortByNewDateBtn.on('click', () => {
+  const sorted = sortByNewDate()
+  updateGrudgesState(grudgesState, sorted)
+  displayGrudgeList(sorted)
+})
 
 if(typeof module !== 'undefined') {
   module.exports = {

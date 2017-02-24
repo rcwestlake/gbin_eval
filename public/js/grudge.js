@@ -47,12 +47,6 @@ const updateForgiveInDb = (id) => {
   .catch(err => console.error('ERROR: in updateForgiveInDb', err))
 }
 
-$grudgeContainer.on('click', (e) => {
-  if(e.target && e.target.matches("button.forgive-btn")) {
-    forgiveGrudge(uid)
-  }
-})
-
 const showForgivenStyles = () => {
   $('body').css('background-color', '#FF7E67')
   $('.forgive-btn').remove()
@@ -61,3 +55,9 @@ const showForgivenStyles = () => {
 const showForgivenContent = () => {
   $('.forgiven-msg').text(`You must feel great. You\'ve forgiven this person.`)
 }
+
+$grudgeContainer.on('click', (e) => {
+  if(e.target && e.target.matches("button.forgive-btn")) {
+    forgiveGrudge(uid)
+  }
+})
