@@ -67,10 +67,22 @@ const clearInputFields = () => {
 }
 
 const getGrudgeCounts = (grudges) => {
-  const length = grudges.length
-  const forgiven = grudges.filter(grudges => grudges.forgiven === true).length
-  const unforgiven = grudges.filter(grudges => grudges.forgiven !== true).length
+  const length = getListCount(grudges)
+  const forgiven = getForgivenCount(grudges)
+  const unforgiven = getUnforgivenCount(grudges)
   displayCounts(length, forgiven, unforgiven)
+}
+
+const getListCount = (grudges) => {
+  return grudges.length
+}
+
+const getForgivenCount = (grudges) => {
+  return grudges.filter(grudges => grudges.forgiven === true).length
+}
+
+const getUnforgivenCount = (grudges) => {
+  return grudges.filter(grudges => grudges.forgiven !== true).length
 }
 
 const displayCounts = (length, forgiven, unforgiven) => {
@@ -121,12 +133,15 @@ const sortByNewDate = () => {
 
 const updateGrudgesState = (state, newState) => {
   state = newState
+  return state
 }
 
 if(typeof module !== 'undefined') {
   module.exports = {
     getGrudgeCounts: getGrudgeCounts,
     sortByOldDate: sortByOldDate,
-    sortByNewDate: sortByNewDate
+    sortByNewDate: sortByNewDate,
+    sortByName: sortByName,
+    updateGrudgesState: updateGrudgesState
   }
 }
