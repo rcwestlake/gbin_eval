@@ -26,8 +26,8 @@ const displayGrudge = (grudge) => {
 
 const grudgeToHTML = (grudge) => {
   //TODO: document fragement
-  $grudgeContainer.append(`<h1>${grudge.name}</h1>
-                            <p>Reason for grudge: ${grudge.offence}</p>
+  $grudgeContainer.append(`<h1>Person: ${grudge.name}</h1>
+                            <p class='reason'>Reason for grudge: ${grudge.offence}</p>
                             <button class='forgive-btn'>Forgive</button>
                             <h3 class='forgiven-msg'></h3>`)
 
@@ -56,7 +56,7 @@ $grudgeContainer.on('click', (e) => {
 })
 
 const showForgivenStyles = () => {
-  $('body').css('background-color', 'pink')
+  $('body').css('background-color', '#FF7E67')
   $('.forgive-btn').remove()
 }
 

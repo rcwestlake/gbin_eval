@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  background-color: #29C6CD;
+  font-family: 'Open Sans', sans-serif;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.grudge-container {
+  margin: 15px 0px;
+  text-align: center;
+}
+
+.reason {
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.forgiven-msg {
+  font-size: 25px;
+  color: white;
+  margin-top: 15px;
+}
+
+.forgive-btn {
+  border: none;
+  background-color: #F03861;
+  color: white;
+  height: 100px;
+  width: 200px;
+  font-size: 32px;
+  margin-top: 15px;
+}
+
+.forgive-btn:hover {
+  background-color: #CF455C;
+}

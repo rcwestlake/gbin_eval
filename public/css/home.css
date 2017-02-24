@@ -47,10 +47,6 @@ button {
   text-align: center;
 }
 
-.add-grudge-btn {
-
-}
-
 .grudge-container {
   display: flex;
   flex-direction: column;
