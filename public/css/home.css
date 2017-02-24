@@ -2,7 +2,7 @@
 
 body {
   box-sizing: border-box;
-  background-color: #fff;
+  background-color: #46C3DB;
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -38,13 +38,18 @@ button {
 }
 
 .section-header {
-  font-size: 25px;
-  margin: 15px 0;
+  font-size: 29px;
+  margin: 25px 0;
 }
 
 .grudge-form {
   margin-top: 40px;
   text-align: center;
+}
+
+.add-grudge-btn {
+  height: 32px;
+  width: 100px;
 }
 
 .grudge-container {
@@ -59,7 +64,7 @@ button {
 }
 
 .grudge-text {
-  color: #FF7E67;
+  color: #CF455C;
   font-size: 35px;
   font-weight: bold;
 }
@@ -69,7 +74,7 @@ button {
 }
 
 .forgiven {
-  color: #A2D5F2;
+  color: #2A528A;
 }
 
 .sort-container {
