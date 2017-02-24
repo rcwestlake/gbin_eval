@@ -19,6 +19,13 @@ button {
   cursor: pointer;
 }
 
+a {
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 40px;
+}
+
 .grudge-container {
   margin: 15px 0px;
   text-align: center;
