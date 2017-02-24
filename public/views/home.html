@@ -3,10 +3,17 @@
   <head>
     <meta charset="utf-8">
     <title>GBIN</title>
+    <link rel="stylesheet" href="../css/reset.css"></link>
+    <link rel="stylesheet" href="../css/home.css"></link>
   </head>
   <body>
-    <h1>the home page</h1>
+    <header>
+      <h1>GBIN</h1>
+      <p class="tagline">A list of grudges and forgiveness</p>
+    </header>
+
     <form class="grudge-form js-grudge-form">
+      <h3 class="section-header">Add a Grudge</h3>
       <input type="text" placeholder="name" class="name-input js-name-input" />
       <input type="text" placeholder="offence description" class="desc-input js-desc-input" />
       <input type="date" class="date-input js-date-input" />
@@ -16,22 +23,25 @@
         Add Grudge
       </button>
     </form>
+
     <section class="grudge-container">
+      <h3 class="section-header">View grudges and forgiven folks</h3>
+      <div class="counts-container">
+        <ul class="counts-list js-counts-list"></ul>
+      </div>
       <ul class="grudge-list-container"></ul>
     </section>
+
     <section class="sort-container">
-      <button class="sort-name-btn js-sort-name-btn">
+      <button class="sort-name-btn js-sort-name-btn sort-btn">
         Sort by Name
       </button>
-      <button class="sort-date-btn js-sort-date-old-btn">
+      <button class="sort-date-btn js-sort-date-old-btn sort-btn">
         Sort by Oldest Grudge
       </button>
-      <button class="sort-date-btn js-sort-date-new-btn">
+      <button class="sort-date-btn js-sort-date-new-btn sort-btn">
         Sort by Newest Grudge
       </button>
-    </section>
-    <section class="counts-container">
-      <ul class="counts-list js-counts-list"></ul>
     </section>
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.3/axios.js"></script>
