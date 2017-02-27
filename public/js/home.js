@@ -81,21 +81,21 @@ const displayCounts = (length, forgiven, unforgiven) => {
   $countList.append(`<li class='count js-count'>Unforgiven count: ${unforgiven}</li>`)
 }
 
-const sortByName = () => {
+const sortByName = (grudgesState) => {
   const sorted = grudgesState.sort((a, b) => {
     return a.name.localeCompare(b.name)
   })
   return sorted
 }
 
-const sortByOldDate = () => {
+const sortByOldDate = (grudgesState) => {
   const sorted = grudgesState.sort((a, b) => {
     return new Date(a.date) - new Date(b.date)
   })
   return sorted
 }
 
-const sortByNewDate = () => {
+const sortByNewDate = (grudgesState) => {
   const sorted = grudgesState.sort((a, b) => {
     return new Date(b.date) - new Date(a.date)
   })
@@ -123,7 +123,7 @@ $sortByNameBtn.on('click', () => {
 })
 
 $sortByOldDateBtn.on('click', () => {
-  const sorted = sortByOldDate()
+  const sorted = sortByOldDate(grudgesState)
   updateGrudgesState(grudgesState, sorted)
   displayGrudgeList(sorted)
 })
@@ -136,13 +136,13 @@ $sortByNewDateBtn.on('click', () => {
 
 if(typeof module !== 'undefined') {
   module.exports = {
-    getGrudgeCounts,
     sortByOldDate,
     sortByNewDate,
     sortByName,
     updateGrudgesState,
     getListCount,
     getForgivenCount,
-    getUnforgivenCount
+    getUnforgivenCount,
+    getGrudgeCounts
   }
 }
