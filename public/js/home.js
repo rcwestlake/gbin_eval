@@ -117,7 +117,7 @@ $form.on('submit', (e) => {
 })
 
 $sortByNameBtn.on('click', () => {
-  const sorted = sortByName()
+  const sorted = sortByName(grudgesState)
   grudgesState = sorted
   displayGrudgeList(sorted)
 })
@@ -129,7 +129,7 @@ $sortByOldDateBtn.on('click', () => {
 })
 
 $sortByNewDateBtn.on('click', () => {
-  const sorted = sortByNewDate()
+  const sorted = sortByNewDate(grudgesState)
   updateGrudgesState(grudgesState, sorted)
   displayGrudgeList(sorted)
 })
