@@ -2,20 +2,16 @@ const expect = require('chai').expect;
 const should = require('chai').should;
 const jsdom = require('mocha-jsdom')
 
-/* Note: structure is set up but the first 6 tests don't pass.
-  Error connecting scripts with node environment and exporting functions */
-
 describe('Unit Tests', () => {
   jsdom()
 
   before(() => {
     $ = require('jquery')
     axios = require('axios')
-  });
+  })
 
-  xit('home.js', () => {
-    const getGrudgeCounts = require('../public/js/home.js')
-    const grudges = [{
+  it('should return sorted array by with oldest date first', () => {
+    const grudgesState = [{
       id: 1,
       name: 'Lebron',
       offence: 'on the cavs',
@@ -29,45 +25,15 @@ describe('Unit Tests', () => {
       date: '2/15/17',
       forgiven: false
     }]
-    expect(getGrudgeCounts(grudges)).to.be.a('function')
+    const sortByOldDate = require('../public/js/home.js').sortByOldDate
+
+    expect(sortByOldDate(grudgesState)[0].date).to.equal('2/15/17')
+    expect(sortByOldDate(grudgesState)[0].id).to.equal(2)
+    expect(sortByOldDate(grudgesState)[1].id).to.equal(1)
   })
 
-  xit('should return sorted array by with oldest date first', () => {
-    const sortByOldDate = require('../public/js/home.js').sortByOldDate
-    const grudges = [{
-      id: 1,
-      name: 'Lebron',
-      offence: 'on the cavs',
-      date: '2/22/17',
-      forgiven: false
-    },
-    {
-      id: 2,
-      name: 'KD',
-      offence: 'left OKC',
-      date: '2/15/17',
-      forgiven: false
-    }]
-
-    expect(sortByOldDate(grudges)).to.equal([{
-      id: 2,
-      name: 'KD',
-      offence: 'left OKC',
-      date: '2/15/17',
-      forgiven: false
-    },
-    {
-      id: 1,
-      name: 'Lebron',
-      offence: 'on the cavs',
-      date: '2/22/17',
-      forgiven: false
-    }])
-  })
-
-  xit('should return sorted array by with oldest date first', () => {
-    const sortByOldDate = require('../public/js/home.js').sortByOldDate
-    const grudges = [{
+  it('should return sorted array by with oldest date first', () => {
+    const grudgesState = [{
       id: 1,
       name: 'Lebron',
       offence: 'on the cavs',
@@ -88,8 +54,21 @@ describe('Unit Tests', () => {
       date: '1/10/17',
       forgiven: false
     }]
+    const sortByOldDate = require('../public/js/home.js').sortByOldDate
 
-    expect(sortByOldDate(grudges)).to.equal([{
+    expect(sortByOldDate(grudgesState)[0].name).to.equal('abe')
+    expect(sortByOldDate(grudgesState)[0].id).to.equal(3)
+  })
+
+  it('should return sorted array with newest date first', () => {
+    const grudges = [{
+      id: 1,
+      name: 'Lebron',
+      offence: 'on the cavs',
+      date: '2/22/17',
+      forgiven: false
+    },
+    {
       id: 3,
       name: 'abe',
       offence: 'likes vegetables',
@@ -102,63 +81,12 @@ describe('Unit Tests', () => {
       offence: 'left OKC',
       date: '2/15/17',
       forgiven: false
-    },
-    {
-      id: 1,
-      name: 'Lebron',
-      offence: 'on the cavs',
-      date: '2/22/17',
-      forgiven: false
-    }])
-  })
+    }]
 
-  xit('should return sorted array with newest date first', () => {
     const sortByNewDate = require('../public/js/home.js').sortByNewDate
-    const grudges = [{
-      id: 1,
-      name: 'Lebron',
-      offence: 'on the cavs',
-      date: '2/22/17',
-      forgiven: false
-    },
-    {
-      id: 3,
-      name: 'abe',
-      offence: 'likes vegetables',
-      date: '1/10/17',
-      forgiven: false
-    },
-    {
-      id: 2,
-      name: 'KD',
-      offence: 'left OKC',
-      date: '2/15/17',
-      forgiven: false
-    }]
 
-    expect(sortByNewDate(grudges)).to.equal([
-    {
-      id: 1,
-      name: 'Lebron',
-      offence: 'on the cavs',
-      date: '2/22/17',
-      forgiven: false
-    },
-    {
-      id: 2,
-      name: 'KD',
-      offence: 'left OKC',
-      date: '2/15/17',
-      forgiven: false
-    },
-    {
-      id: 3,
-      name: 'abe',
-      offence: 'likes vegetables',
-      date: '1/10/17',
-      forgiven: false
-    }
-  ])
+    expect(sortByNewDate(grudges)[2].id).to.equal(3)
+    expect(sortByNewDate(grudges)[2].name).to.equal('abe')
   })
 
   xit('should return sorted array with newest date first', () => {
